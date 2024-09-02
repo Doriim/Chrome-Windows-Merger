@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Windows Merger",
+  "version": "1.0",
+  "description": "Merge tabs from other Chrome windows into one.",
+  "permissions": ["tabs", "windows"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

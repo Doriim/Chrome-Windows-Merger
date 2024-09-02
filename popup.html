@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tab Merger</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        font-family: Arial, sans-serif;
+        background: transparent;
+      }
+
+      h2 {
+        text-align: center;
+      }
+      button {
+        padding: 0.5rem 2rem;
+        border: none;
+      }
+      button:hover {
+        background: linear-gradient(90deg, #ff8a00, #e52e71);
+      }
+    </style>
+    <script defer src="popup.js"></script>
+  </head>
+  <body>
+    <button id="mergeTabsButton">Merge Windows</button>
+  </body>
+</html>
