@@ -9,27 +9,53 @@
         box-sizing: border-box;
       }
       body {
-        display: flex;
-        flex-direction: column;
-        width: 200px;
-        font-family: Arial, sans-serif;
-        background: transparent;
+        width: fit-content;
+        background-color: #292a2d;
       }
 
-      h2 {
-        text-align: center;
+      main {
+        display: flex;
+        flex-direction: column;
       }
+
+      section {
+        padding: 2px;
+        margin: 0.5rem 0;
+      }
+
+      .mergeTo {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
       button {
         padding: 0.5rem 2rem;
         border: none;
       }
       button:hover {
-        background: linear-gradient(90deg, #ff8a00, #e52e71);
+        /* background: linear-gradient(90deg, #ff8a00, #e52e71); */
+        color: white;
+        background-color: #7987b1;
+      }
+      .line {
+        border-bottom: 1px solid rgb(175, 175, 175);
       }
     </style>
     <script defer src="popup.js"></script>
   </head>
   <body>
-    <button id="mergeTabsButton">Merge Windows</button>
+    <main>
+      <section class="mergeAll">
+        <button id="mergeAllTabsButton">Merge Windows</button>
+      </section>
+      <span class="line"></span>
+      <section class="mergeTo">
+        <button id="mergeTabButton">Merge Tab To</button>
+        <select id="windowSelect">
+          <option value="">Select a window</option>
+        </select>
+      </section>
+    </main>
   </body>
 </html>
