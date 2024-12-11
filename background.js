@@ -2,21 +2,15 @@ chrome.runtime.onInstalled.addListener(() => {
   console.log("Tab Merger extension installed.");
 });
 
-// chrome.action.onClicked.addListener((currentTab) => {
-//   chrome.windows.getCurrent((currWindow) => {
-//     mergeTabs(currWindow.id);
-//   });
-// });
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const { action, windowId } = request;
-  if (action === "mergeTabs") {
-    mergeTabs(windowId);
-    sendResponse({ status: "Merging tabs" });
+  if (action === "mergeWindows") {
+    mergeWindows(windowId);
+    sendResponse({ status: "Merging windows to current window" });
   }
 });
 
-async function mergeTabs(windowId) {
+async function mergeWindows(windowId) {
   try {
     const windows = await chrome.windows.getAll({ populate: true });
 
@@ -46,14 +40,7 @@ async function mergeTabs(windowId) {
     windowsToMove.forEach((window) => {
       tabsToMove.push(...window.tabs.map((tab) => tab.id));
     });
-    console.log("tabsToMove", tabsToMove);
-    /**
-     * chrome.tabs.move(
-            tabIds: number | number[],
-            moveProperties: {windowId, index},
-            callback?: function,
-            )
-     */
+
     // Move tabs to selected window
     // Index -1 means the tabs will be moved to the end of the tabs in the window.
     await chrome.tabs.move(tabsToMove, { windowId: selectedWindow.id, index: -1 });
