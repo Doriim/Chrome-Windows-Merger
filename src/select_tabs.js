@@ -25,8 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
       tabElement.setAttribute("data-id", tab.id);
       tabElement.innerHTML = `
               <div>
-                  <strong>${tab.title.slice(0, 50)}</strong>
-                  <div>${tab.url}</div>
+                  <strong>${
+                    tab.title.length > 35
+                      ? tab.title.slice(0, 35) + "..."
+                      : tab.title
+                  }</strong>
+                  <div>${
+                    tab.url.length > 50 ? tab.url.slice(0, 50) + "..." : tab.url
+                  }</div>
+                  ${
+                    selectedTabs.has(tab.id)
+                      ? '<img class="tick" src="/icons/checkbox-checked.svg" alt="Checked" />'
+                      : '<img class="tick" src="/icons/checkbox-unchecked.svg" alt="Unchecked" />'
+                  }
               </div>
           `;
       tabElement.addEventListener("click", () => toggleTab(tab.id));
@@ -67,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log("---------------------------------------------------");
     if (e.button !== 0) return;
     isDragging = true;
-    dragStart = { x: e.clientX - 25, y: e.clientY - 37 };
+    dragStart = { x: e.clientX, y: e.clientY };
     selectionBox.style.left = `${dragStart.x}px`;
     selectionBox.style.top = `${dragStart.y}px`;
     selectionBox.style.width = "0px";
@@ -85,28 +96,28 @@ document.addEventListener("DOMContentLoaded", () => {
     //   }
     // and we don't need to subtract 25 and 37 from the clientX and clientY
 
-    // const currentX = e.clientX;
-    // const currentY = e.clientY;
+    const currentX = e.clientX;
+    const currentY = e.clientY;
 
-    // const left = Math.min(dragStart.x, currentX);
-    // const top = Math.min(dragStart.y, currentY);
-    // const width = Math.abs(currentX - dragStart.x);
-    // const height = Math.abs(currentY - dragStart.y);
+    const left = Math.min(dragStart.x, currentX);
+    const top = Math.min(dragStart.y, currentY);
+    const width = Math.abs(currentX - dragStart.x);
+    const height = Math.abs(currentY - dragStart.y);
 
-    // selectionBox.style.left = `${left}px`;
-    // selectionBox.style.top = `${top}px`;
-    // selectionBox.style.width = `${width}px`;
-    // selectionBox.style.height = `${height}px`;
+    selectionBox.style.left = `${left}px`;
+    selectionBox.style.top = `${top}px`;
+    selectionBox.style.width = `${width}px`;
+    selectionBox.style.height = `${height}px`;
 
-    const diffX = e.clientX - dragStart.x - 25;
-    const diffY = e.clientY - dragStart.y - 37;
+    // const diffX = e.clientX - dragStart.x - 25;
+    // const diffY = e.clientY - dragStart.y - 37;
 
-    selectionBox.style.left =
-      diffX < 0 ? dragStart.x + diffX + "px" : dragStart.x + "px";
-    selectionBox.style.top =
-      diffY < 0 ? dragStart.y + diffY + "px" : dragStart.y + "px";
-    selectionBox.style.height = Math.abs(diffY) + "px";
-    selectionBox.style.width = Math.abs(diffX) + "px";
+    // selectionBox.style.left =
+    //   diffX < 0 ? dragStart.x + diffX + "px" : dragStart.x + "px";
+    // selectionBox.style.top =
+    //   diffY < 0 ? dragStart.y + diffY + "px" : dragStart.y + "px";
+    // selectionBox.style.height = Math.abs(diffY) + "px";
+    // selectionBox.style.width = Math.abs(diffX) + "px";
 
     const selectionRect = selectionBox.getBoundingClientRect();
     document.querySelectorAll(".tab-item").forEach((tab) => {

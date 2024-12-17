@@ -4,12 +4,14 @@
 
 Chrome Windows Merger is a powerful extension designed to streamline and simplify the process of merging tabs from one Chrome window to another to save time⏳. It provides an intuitive interface and robust features to ensure efficiency. 😍
 
-![Chrome Windows Merger](preview/v2-1-0.png)
+![Chrome Windows Merger](preview/v3-0-0-main.png)
+<img src="preview/v3-0-0-merge-tabs-select.png" alt="Chrome Windows Merger" height="600">
 
 ## Features
 
 - **Easy-to-use Interface**: User-friendly design for seamless navigation and operation.
-- **Tab Merging**: Supports merging of tabs from one window to another.
+- **Tab Merging**: Quickly merge one tab into another window.
+- **Tabs Merging**: Open a new window to choose tabs to merge into another window.
 
 ## Installation
 
