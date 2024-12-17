@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/select_tabs.css" />
+    <script defer src="select_tabs.js"></script>
+    <title>Tab Selector</title>
+  </head>
+  <body>
+    <!-- <button id="openDialog" class="button">Select Tabs</button> -->
+
+    <div id="dialogOverlay" class="dialog-overlay"></div>
+    <div id="dialog" class="dialog" role="dialog" aria-labelledby="dialogTitle">
+      <!-- <p id="cursor-log"></p> -->
+      <h2 id="dialogTitle">Select Tabs to Merge</h2>
+      <div class="button-group">
+        <button id="selectAll" class="button button-outline">Select All</button>
+        <button id="deselectAll" class="button button-outline">Deselect All</button>
+      </div>
+      <div id="tabList" class="tab-list"></div>
+      <div id="selectionBox" class="selection-box"></div>
+      <div class="dialog-footer">
+        <div class="merge-section">
+          <p id="moveLabel">Merge <span id="selectedCount">0</span> tab(s) to</p>
+          <select id="windowSelect">
+            <option value="" disabled selected>Select a window</option>
+          </select>
+        </div>
+        <button id="cancelButton" class="button button-outline">Cancel</button>
+      </div>
+    </div>
+  </body>
+</html>

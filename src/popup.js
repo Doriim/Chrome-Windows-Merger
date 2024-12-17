@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("openDialog").addEventListener("click", function () {
+    chrome.windows.getCurrent((currWindow) => {
+      chrome.windows.create({
+        url: `src/select_tabs.html?initialWindowId=${currWindow.id}`,
+        type: "popup",
+        width: 525,
+        height: 750,
+      });
+    });
+  });
+
   //*Merge all windows to current window
   const mergeWindowsButton = document.getElementById("mergeWindows");
 
@@ -17,12 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Get the current window ID and exclude it from the dropdown
   chrome.windows.getCurrent({}, function (currentWindow) {
-    const currentWindowId = currentWindow.id;
-
     // Populate the dropdown with available windows excluding the current window
     chrome.windows.getAll({ populate: true }, function (windows) {
       windows.forEach((window) => {
-        if (window.id !== currentWindowId) {
+        if (window.id !== currentWindow.id) {
           const option = document.createElement("option");
           option.value = window.id;
           option.textContent = `Window ${window.id} (${window.tabs.length})`;

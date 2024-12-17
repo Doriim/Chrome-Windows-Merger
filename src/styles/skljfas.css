@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+}
+.dialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 425px;
+  width: 100%;
+  z-index: 1000;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+.dialog-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.tab-list {
+  margin-top: 10px;
+  position: relative;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+.tab-item {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.tab-item.selected {
+  background-color: #e6f3ff;
+  border-color: #3498db;
+}
+.tab-item:hover {
+  background-color: #f5f5f5;
+}
+.selection-box {
+  position: absolute;
+  border: 2px solid #3498db;
+  background-color: rgba(52, 152, 219, 0.2);
+  pointer-events: none;
+  display: none;
+  z-index: 1001;
+}
+.button {
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.button:hover {
+  background-color: #2980b9;
+}
+.button-outline {
+  background-color: transparent;
+  color: #3498db;
+  border: 1px solid #3498db;
+}
+.button-outline:hover {
+  background-color: #e6f3ff;
+}
+.button-group {
+  margin-bottom: 10px;
+}
+.dialog-footer {
+  margin-top: 20px;
+  text-align: right;
+}
