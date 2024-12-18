@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderTabs() {
     tabList.innerHTML = "";
     tabs.forEach((tab) => {
+      console.log(tab);
       const tabElement = document.createElement("div");
       tabElement.className = `tab-item${
         selectedTabs.has(tab.id) ? " selected" : ""
@@ -25,19 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
       tabElement.setAttribute("data-id", tab.id);
       tabElement.innerHTML = `
               <div>
-                  <strong>${
-                    tab.title.length > 35
-                      ? tab.title.slice(0, 35) + "..."
-                      : tab.title
-                  }</strong>
-                  <div>${
-                    tab.url.length > 50 ? tab.url.slice(0, 50) + "..." : tab.url
-                  }</div>
-                  ${
-                    selectedTabs.has(tab.id)
-                      ? '<img class="tick" src="/icons/checkbox-checked.svg" alt="Checked" />'
-                      : '<img class="tick" src="/icons/checkbox-unchecked.svg" alt="Unchecked" />'
-                  }
+              <div class="tab-item-title-container">
+                <img class="favIcon" src=${tab.favIconUrl} alt="Checked" />
+                <strong class="tab-item-title">${
+                  tab.title.length > 35
+                    ? tab.title.slice(0, 35) + "..."
+                    : tab.title
+                }</strong>
+              </div>
+                <div>${
+                  tab.url.length > 50 ? tab.url.slice(0, 50) + "..." : tab.url
+                }</div>
+                ${
+                  selectedTabs.has(tab.id)
+                    ? '<img class="tick" src="/icons/checkbox-checked.svg" alt="Checked" />'
+                    : '<img class="tick" src="/icons/checkbox-unchecked.svg" alt="Unchecked" />'
+                }
               </div>
           `;
       tabElement.addEventListener("click", () => toggleTab(tab.id));
@@ -198,7 +202,9 @@ document.addEventListener("DOMContentLoaded", () => {
           index: -1,
         },
         function () {
-          console.log(`Moved ${tabIds.length} tabs to window ${selectedWindowId}`);
+          console.log(
+            `Moved ${tabIds.length} tabs to window ${selectedWindowId}`
+          );
           selectedTabs.clear();
           closeWindow();
           renderTabs();

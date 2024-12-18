@@ -54,6 +54,21 @@ body {
   background-color: #4e5256;
 }
 
+.tab-item-title-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tab-item-title {
+  font-size: 14px;
+}
+
+.favIcon {
+  width: 20px;
+  height: 20px;
+}
+
 .tick {
   position: absolute;
   right: 5%;
